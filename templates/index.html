@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRAMMATICS CHECKER</title>
+  <style> 
+    body{
+        background-color: rgb(134, 199, 153);
+      
+        height:95vh;
+    }
+
+.paraphrase{
+    display: flex;
+    width:100%;
+    height:70vh;
+  
+    justify-content: space-around;
+
+}
+ h1{
+    color:rgb(16, 16, 172);
+    font-size: 40px;
+}
+     .form{
+        
+     color:rgb(204, 82, 12);
+      }
+     
+      input[type="checkbox"]{
+          padding:20px;
+      }
+     h2{
+         color:brown;
+     }
+     .text{
+         background-color: aliceblue;
+         color:blueviolet;
+         border-radius: 6px;
+         border:2px solid orange;
+         padding:20px;
+         font-size:larger;
+     }
+     .display{
+        background-color: #000;
+        color:rgb(32, 238, 13);
+        width:500px;
+        min-height:200px;
+        border-radius: 6px;
+        padding:20px;
+     }
+     form input{
+     margin:5px;
+         padding:10px;
+     }
+     button{
+         color:aquamarine;
+         background-color: #000;
+         padding:8px;
+         border-radius:3px;
+     }
+     .arrow{
+        color:red;
+        {% comment %} padding:10px; {% endcomment %}
+     }
+     .gh{
+        color:navy;
+        background-color:cyan;
+     }
+  </style> 
+</head>
+<body >
+    <center><h1>ParaPhrase Checker </h1></center>
+    <div class="paraphrase">
+       
+    <div class="input">
+        <h2>ENTER YOUR TEXT:</h2>
+    
+   <form action="submit" method="get" class="form">
+
+       <textarea name="text" id="textarea" cols="50" rows="11" class="text">{{unpurified}}</textarea><br>
+       {% comment %} <input type="checkbox" name="grammer">Change Gramatical Mistakes<br> {% endcomment %}
+       <input type="checkbox" name="summary">Change summary<br>
+       <input type="checkbox" name="lang">Change your text from other language to english<br>
+       <select name="langip" class="gh">
+        {% for i,j in lang_p.items %}
+        <option>{{i}} <span class="arrow">=&gt;<span> {{j}}</option>
+        {% endfor %}
+       </select>
+       <input type="checkbox" name="olang">Change your text from one language to other language<br>
+       <input type="checkbox" name="cap">Capitalize Your Text<br>
+       
+       <input type="checkbox" name="punc">Remove Puncutuations<br>
+ 
+       <input type="checkbox" name="title">Capitalize First Letter In The Each Word <br>
+ 
+       <input type="checkbox" name="space">Remove Extra Spaces<br>
+ 
+       <input type="checkbox" name="bold">Change Your Text To Bold<br>
+ 
+       <input type="checkbox" name="italic">Change Your Text To Italic<br>
+       <br>
+       <button type="submit">ENTER</button>
+    </form>
+</div>
+    <div>
+       <h2>CHANGED TEXT:</h2>
+       <div class="display">
+
+         
+
+        <!-- {% comment %} {% if  bold == None and italic == None%}
+           <p>{{tetx}}</p>
+
+        {% else %}
+            {% if bold == 'on' and italic == 'on' %}
+                <b><i>{{text}}</i></b>
+            {% elif bold == 'on' and italic == None %}
+            <b>{{text}}</b>
+            {% elif bold == None and italic == 'on' %}
+               <i >{{text}}</i>
+              {% else %}
+                <p>{{text}}</p>
+            {% endif %}
+        {% endif %} {% endcomment %} -->
+
+    {% if bold == 'on' and italic == 'on' %}
+    <p><b><i>{{text}}</i></b></p>
+{% elif bold == 'on' and italic ==  None %}
+    <p> <b> {{text}}</b></p>
+{% elif bold == None and italic ==  'on' %}
+    <p> <i> {{text}}</i></p>
+{% else %}
+    <p>{{text}}</p>
+{% endif %}
+
+        
+           
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
